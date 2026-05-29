@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Formular Feedback-u | AI dhe Shëndeti Mendor</title>
+  <style>
+    :root { --primary:#0ea5b7; --primary-dark:#087b8a; --accent:#78be20; --card:#fff; --text:#1f2937; --muted:#6b7280; --border:#d9eef2; }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family:Arial, Helvetica, sans-serif; background:linear-gradient(135deg,#e7f8fb 0%,#f8fff1 100%); color:var(--text); line-height:1.6; }
+    .feedback-section { padding:48px 16px; }
+    .feedback-container { max-width:900px; margin:0 auto; background:var(--card); border:1px solid var(--border); border-radius:22px; box-shadow:0 18px 45px rgba(8,123,138,.12); overflow:hidden; }
+    .feedback-header { background:linear-gradient(135deg,var(--primary),var(--primary-dark)); color:#fff; padding:34px 32px; }
+    .feedback-header h2 { margin:0 0 10px; font-size:clamp(1.7rem,3vw,2.5rem); line-height:1.2; }
+    .feedback-header p { margin:0; max-width:760px; font-size:1rem; opacity:.95; }
+    form { padding:32px; }
+    .form-grid { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+    .form-group { margin-bottom:18px; }
+    .form-group.full { grid-column:1 / -1; }
+    label { display:block; font-weight:700; margin-bottom:8px; color:#12333a; }
+    .hint { display:block; font-size:.88rem; color:var(--muted); margin-top:-3px; margin-bottom:8px; }
+    input, select, textarea { width:100%; padding:13px 14px; border:1px solid #cde6eb; border-radius:12px; font-size:1rem; font-family:inherit; color:var(--text); background:#fbfeff; transition:.2s ease; }
+    input:focus, select:focus, textarea:focus { outline:none; border-color:var(--primary); box-shadow:0 0 0 4px rgba(14,165,183,.14); background:#fff; }
+    textarea { resize:vertical; min-height:110px; }
+    .radio-group, .checkbox-group { display:grid; gap:10px; padding:12px 14px; background:#f7fcfd; border:1px solid #d9eef2; border-radius:12px; }
+    .radio-group label, .checkbox-group label { display:flex; gap:9px; align-items:flex-start; font-weight:500; margin:0; color:var(--text); }
+    .radio-group input, .checkbox-group input { width:auto; margin-top:5px; accent-color:var(--primary); }
+    .rating-row { display:grid; grid-template-columns:repeat(5,1fr); gap:8px; }
+    .rating-row label { border:1px solid #d9eef2; border-radius:12px; padding:10px 8px; text-align:center; font-weight:600; cursor:pointer; background:#f7fcfd; }
+    .rating-row input { display:block; width:auto; margin:0 auto 5px; accent-color:var(--primary); }
+    .privacy-note { background:#f2fae9; border-left:5px solid var(--accent); padding:14px 16px; border-radius:12px; color:#29410f; font-size:.95rem; margin:6px 0 22px; }
+    .submit-row { display:flex; flex-wrap:wrap; gap:14px; align-items:center; margin-top:8px; }
+    button { border:0; border-radius:999px; padding:14px 28px; background:var(--primary); color:#fff; font-size:1rem; font-weight:700; cursor:pointer; transition:.2s ease; }
+    button:hover { background:var(--primary-dark); transform:translateY(-1px); }
+    .small-text { color:var(--muted); font-size:.9rem; }
+    @media (max-width:720px) { .feedback-header, form { padding:24px 18px; } .form-grid { grid-template-columns:1fr; } .rating-row { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <section class="feedback-section">
+    <div class="feedback-container">
+      <div class="feedback-header">
+        <h2>Formular feedback-u</h2>
+        <p>Faleminderit që morët pjesë në sesionin mbi Inteligjencën Artificiale, studentët dhe shëndetin mendor. Mendimi juaj na ndihmon ta përmirësojmë këtë trajnim në të ardhmen.</p>
+      </div>
+
+      <form action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE" />
+        <input type="hidden" name="subject" value="Feedback për sesionin: AI dhe Shëndeti Mendor" />
+        <input type="hidden" name="from_name" value="Formular Feedback-u - Albanian Cultural Association" />
+        <input type="hidden" name="redirect" value="https://web3forms.com/success" />
+        <input type="checkbox" name="botcheck" style="display:none;" tabindex="-1" autocomplete="off" />
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="name">Emri</label>
+            <span class="hint">Opsionale</span>
+            <input type="text" id="name" name="Emri" placeholder="Shkruani emrin tuaj" />
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <span class="hint">Opsionale, vetëm nëse dëshironi të kontaktoheni</span>
+            <input type="email" id="email" name="Email" placeholder="email@example.com" />
+          </div>
+
+          <div class="form-group full">
+            <label for="role">Cili është roli juaj?</label>
+            <select id="role" name="Roli i pjesëmarrësit" required>
+              <option value="">Zgjidhni një opsion</option>
+              <option>Student/e</option>
+              <option>Pedagog/e ose staf universitar</option>
+              <option>Prind / kujdestar</option>
+              <option>Punonjës/e organizate ose shoqate</option>
+              <option>Tjetër</option>
+            </select>
+          </div>
+
+          <div class="form-group full">
+            <label>Si do ta vlerësonit sesionin në përgjithësi?</label>
+            <div class="rating-row" role="radiogroup" aria-label="Vlerësimi i përgjithshëm">
+              <label><input type="radio" name="Vlerësimi i përgjithshëm" value="1" required />1</label>
+              <label><input type="radio" name="Vlerësimi i përgjithshëm" value="2" />2</label>
+              <label><input type="radio" name="Vlerësimi i përgjithshëm" value="3" />3</label>
+              <label><input type="radio" name="Vlerësimi i përgjithshëm" value="4" />4</label>
+              <label><input type="radio" name="Vlerësimi i përgjithshëm" value="5" />5</label>
+            </div>
+          </div>
+
+          <div class="form-group full">
+            <label>Sa i dobishëm ishte sesioni për ju?</label>
+            <div class="radio-group">
+              <label><input type="radio" name="Dobishmëria e sesionit" value="Shumë i dobishëm" required /> Shumë i dobishëm</label>
+              <label><input type="radio" name="Dobishmëria e sesionit" value="I dobishëm" /> I dobishëm</label>
+              <label><input type="radio" name="Dobishmëria e sesionit" value="Deri diku i dobishëm" /> Deri diku i dobishëm</label>
+              <label><input type="radio" name="Dobishmëria e sesionit" value="Jo shumë i dobishëm" /> Jo shumë i dobishëm</label>
+            </div>
+          </div>
+
+          <div class="form-group full">
+            <label>Cila pjesë e sesionit ju ndihmoi më shumë?</label>
+            <div class="checkbox-group">
+              <label><input type="checkbox" name="Pjesët më të dobishme" value="Çfarë është AI dhe si funksionon" /> Çfarë është AI dhe si funksionon</label>
+              <label><input type="checkbox" name="Pjesët më të dobishme" value="Përdorimi i AI-së për studime dhe organizim" /> Përdorimi i AI-së për studime dhe organizim</label>
+              <label><input type="checkbox" name="Pjesët më të dobishme" value="AI dhe shëndeti mendor te studentët" /> AI dhe shëndeti mendor te studentët</label>
+              <label><input type="checkbox" name="Pjesët më të dobishme" value="Si të shkruajmë prompt-e më të mira" /> Si të shkruajmë prompt-e më të mira</label>
+              <label><input type="checkbox" name="Pjesët më të dobishme" value="Rreziqet, privatësia dhe përdorimi i sigurt" /> Rreziqet, privatësia dhe përdorimi i sigurt</label>
+              <label><input type="checkbox" name="Pjesët më të dobishme" value="Politikat dhe udhëzimet për përdorimin e AI-së" /> Politikat dhe udhëzimet për përdorimin e AI-së</label>
+            </div>
+          </div>
+
+          <div class="form-group full">
+            <label for="confidence_before">Sa të sigurt ndiheshit për përdorimin e AI-së para sesionit?</label>
+            <select id="confidence_before" name="Siguria para sesionit" required>
+              <option value="">Zgjidhni një opsion</option>
+              <option>Shumë pak i/e sigurt</option>
+              <option>Pak i/e sigurt</option>
+              <option>Mesatarisht i/e sigurt</option>
+              <option>I/e sigurt</option>
+              <option>Shumë i/e sigurt</option>
+            </select>
+          </div>
+
+          <div class="form-group full">
+            <label for="confidence_after">Sa të sigurt ndiheni për përdorimin e AI-së pas sesionit?</label>
+            <select id="confidence_after" name="Siguria pas sesionit" required>
+              <option value="">Zgjidhni një opsion</option>
+              <option>Shumë pak i/e sigurt</option>
+              <option>Pak i/e sigurt</option>
+              <option>Mesatarisht i/e sigurt</option>
+              <option>I/e sigurt</option>
+              <option>Shumë i/e sigurt</option>
+            </select>
+          </div>
+
+          <div class="form-group full">
+            <label>Pas këtij sesioni, a ndiheni më të vetëdijshëm për rreziqet e AI-së?</label>
+            <div class="radio-group">
+              <label><input type="radio" name="Vetëdija për rreziqet e AI-së" value="Po, shumë më tepër" required /> Po, shumë më tepër</label>
+              <label><input type="radio" name="Vetëdija për rreziqet e AI-së" value="Po, pak më tepër" /> Po, pak më tepër</label>
+              <label><input type="radio" name="Vetëdija për rreziqet e AI-së" value="Jo shumë" /> Jo shumë</label>
+              <label><input type="radio" name="Vetëdija për rreziqet e AI-së" value="Jo" /> Jo</label>
+            </div>
+          </div>
+
+          <div class="form-group full">
+            <label for="learning">Cili ishte mësimi kryesor që morët nga sesioni?</label>
+            <textarea id="learning" name="Mësimi kryesor" placeholder="Shkruani përgjigjen tuaj..." required></textarea>
+          </div>
+
+          <div class="form-group full">
+            <label for="next_step">Cili është hapi juaj i radhës pas këtij sesioni?</label>
+            <textarea id="next_step" name="Hapi i radhës" placeholder="P.sh. do të provoj një mjet AI, do të kontrolloj privatësinë, do të përdor prompt-e më të qarta..."></textarea>
+          </div>
+
+          <div class="form-group full">
+            <label for="improve">Çfarë mund të përmirësojmë për sesionet e ardhshme?</label>
+            <textarea id="improve" name="Sugjerime për përmirësim" placeholder="Shkruani sugjerimet tuaja..."></textarea>
+          </div>
+
+          <div class="form-group full">
+            <label>A dëshironi të merrni informacion për sesione ose aktivitete të ardhshme?</label>
+            <div class="radio-group">
+              <label><input type="radio" name="Dëshiron kontakt në të ardhmen" value="Po" required /> Po</label>
+              <label><input type="radio" name="Dëshiron kontakt në të ardhmen" value="Jo" /> Jo</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="privacy-note">
+          Ju lutemi mos shkruani informacione shumë personale ose të ndjeshme për shëndetin tuaj mendor në këtë formular.
+          Nëse keni nevojë për mbështetje urgjente, kontaktoni shërbimet përkatëse të universitetit, një profesionist të shëndetit mendor ose shërbimet emergjente.
+        </div>
+
+        <div class="submit-row">
+          <button type="submit">Dërgo feedback-un</button>
+          <span class="small-text">Fushat e detyrueshme duhet të plotësohen para dërgimit.</span>
+        </div>
+      </form>
+    </div>
+  </section>
+</body>
+</html>
